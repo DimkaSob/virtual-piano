@@ -1,147 +1,123 @@
-document.addEventListener("keydown", function (event) {
-    if (event.key == "A") {
-        keyA();
-        console.log("А - работает, лопушок!");
-    } else if (event.key == "a") {
-        keyA();
-        console.log("а - работает, лопушок!");
-    } else if (event.key == "S") {
-        keyS();
-        console.log("The 'S' key is pressed.");
-    } else if (event.key == "s") {
-        keyS();
-        console.log("The 's' key is pressed.");
-    } else if (event.key == "D") {
-        keyD();
-        console.log("The 'D' key is pressed.");
-    } else if (event.key == "d") {
-        keyD();
-        console.log("The 'd' key is pressed.");
-    } else if (event.key == "F") {
-        keyF();
-        console.log("The 'F' key is pressed.");
-    } else if (event.key == "f") {
-        keyF();
-        console.log("The 'f' key is pressed.");
-    } else if (event.key == "G") {
-        keyG();
-        console.log("The 'G' key is pressed.");
-    } else if (event.key == "g") {
-        keyG();
-        console.log("The 'g' key is pressed.");
-    } else if (event.key == "H") {
-        keyH();
-        console.log("The 'H' key is pressed.");
-    } else if (event.key == "h") {
-        keyH();
-        console.log("The 'h' key is pressed.");
-    } else if (event.key == "J") {
-        keyJ();
-        console.log("The 'J' key is pressed.");
-    } else if (event.key == "j") {
-        keyJ();
-        console.log("The 'j' key is pressed.");
-    } else if (event.key == "W") {
-        keyW();
-        console.log("The 'W' key is pressed.");
-    } else if (event.key == "w") {
-        keyW();
-        console.log("The 'w' key is pressed.");
-    } else if (event.key == "E") {
-        keyE();
-        console.log("The 'E' key is pressed.");
-    } else if (event.key == "e") {
-        keyE();
-        console.log("The 'e' key is pressed.");
-    } else if (event.key == "T") {
-        keyT();
-        console.log("The 'T' key is pressed.");
-    } else if (event.key == "t") {
-        keyT();
-        console.log("The 't' key is pressed.");
-    } else if (event.key == "Y") {
-        keyY();
-        console.log("The 'Y' key is pressed.");
-    } else if (event.key == "y") {
-        keyY();
-        console.log("The 'y' key is pressed.");
-    } else if (event.key == "U") {
-        keyU();
-        console.log("The 'U' key is pressed.");
-    } else if (event.key == "u") {
-        keyU();
-        console.log("The 'u' key is pressed.");
-    } else console.log("Warning!");
+const keys = [
+    {
+        note: 'A',
+        color: 'white',
+        keyCode: 65,
+        audioPath: 'white_keys/A.mp3'
+    },
+    {
+        note: 'S',
+        color: 'white',
+        keyCode: 83,
+        audioPath: 'white_keys/S.mp3'
+    },
+    {
+        note: 'D',
+        color: 'white',
+        keyCode: 68,
+        audioPath: 'white_keys/D.mp3'
+    },
+    {
+        note: 'F',
+        color: 'white',
+        keyCode: 70,
+        audioPath: 'white_keys/F.mp3'
+    },
+    {
+        note: 'G',
+        color: 'white',
+        keyCode: 71,
+        audioPath: 'white_keys/G.mp3'
+    },
+    {
+        note: 'H',
+        color: 'white',
+        keyCode: 72,
+        audioPath: 'white_keys/H.mp3'
+    },
+    {
+        note: 'J',
+        color: 'white',
+        keyCode: 74,
+        audioPath: 'white_keys/J.mp3'
+    },
+    {
+        note: 'W',
+        color: 'black',
+        keyCode: 87,
+        audioPath: 'black_keys/W.mp3'
+    },
+    {
+        note: 'E',
+        color: 'black',
+        keyCode: 69,
+        audioPath: 'black_keys/E.mp3'
+    },
+    {
+        note: 'T',
+        color: 'black',
+        keyCode: 84,
+        audioPath: 'black_keys/T.mp3'
+    },
+    {
+        note: 'Y',
+        color: 'black',
+        keyCode: 89,
+        audioPath: 'black_keys/Y.mp3'
+    },
+    {
+        note: 'U',
+        color: 'black',
+        keyCode: 85,
+        audioPath: 'black_keys/U.mp3'
+    }
+];
+
+keys.forEach(function(item) {
+    if (item.color === 'white') {
+        let kbd = document.createElement('kbd');
+        kbd.innerText = item.note;
+        let divWhiteKeys = document.querySelector('.white-keys')
+        divWhiteKeys.append(kbd);
+        kbd.id = "button";
+    } else {
+        let kbdBlack = document.createElement('kbd');
+        kbdBlack.innerText = item.note;
+        let divBlackKeys = document.querySelector('.black-keys');
+        divBlackKeys.append(kbdBlack);
+        kbdBlack.id = "button";
+        if (item.note === 'E') {
+            kbdBlack.classList.add('gap');
+        };
+    };
+    
 });
 
-function keyA() {
-    let audio1 = document.createElement('audio');
-    audio1.src = 'white_keys/A.mp3';
-    audio1.play();
-}
+let keyButton = document.getElementById('button');
+let allKeys = document.querySelector('.container');
 
-function keyS() {
-    let audio2 = document.createElement('audio');
-    audio2.src = 'white_keys/S.mp3';
-    audio2.play();
-}
+allKeys.addEventListener('click', function(event) {
+    let key = event.target.innerText;
+    
+    keys.find(item => {
+        if (item.note === key) {
+            audioPlay(item);
+        };
+    });
+}); 
 
-function keyD() {
-    let audio3 = document.createElement('audio');
-    audio3.src = 'white_keys/D.mp3';
-    audio3.play();
-}
+document.addEventListener("keydown", function (event) {
+    let key = event.keyCode;
 
-function keyF() {
-    let audio4 = document.createElement('audio');
-    audio4.src = 'white_keys/F.mp3';
-    audio4.play();
-}
+    keys.find(item => {
+        if (item.keyCode === key) {
+            audioPlay(item);
+        };
+    });
+});
 
-function keyG() {
-    let audio5 = document.createElement('audio');
-    audio5.src = 'white_keys/G.mp3';
-    audio5.play();
-}
-
-function keyH() {
-    let audio6 = document.createElement('audio');
-    audio6.src = 'white_keys/H.mp3';
-    audio6.play();
-}
-
-function keyJ() {
-    let audio7 = document.createElement('audio');
-    audio7.src = 'white_keys/J.mp3';
-    audio7.play();
-}
-
-function keyW() {
-    let audio8 = document.createElement('audio');
-    audio8.src = 'black_keys/W.mp3';
-    audio8.play();
-}
-
-function keyE() {
-    let audio9 = document.createElement('audio');
-    audio9.src = 'black_keys/E.mp3';
-    audio9.play();
-}
-
-function keyT() {
-    let audio10 = document.createElement('audio');
-    audio10.src = 'black_keys/T.mp3';
-    audio10.play();
-}
-
-function keyY() {
-    let audio11 = document.createElement('audio');
-    audio11.src = 'black_keys/Y.mp3';
-    audio11.play();
-}
-
-function keyU() {
-    let audio12 = document.createElement('audio');
-    audio12.src = 'black_keys/U.mp3';
-    audio12.play();
-}
+function audioPlay (item) {
+    const audio = document.createElement('audio');
+    audio.src = item.audioPath;
+    audio.play();
+};
