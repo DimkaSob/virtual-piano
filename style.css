@@ -14,7 +14,9 @@ body {
     justify-content: center;*/
   width: 40vw;
   height: 20vw;
-  margin: 12% auto;
+  margin-top: 12%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .white-keys {
@@ -59,4 +61,66 @@ body {
 
 .gap {
   margin-right: 19%;
+}
+
+/*burger-menu-style*/
+.menu {
+  position: fixed;
+  transform: translateY(100%);
+  transition: transform 1s ease;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background: black;
+  color: white;
+  list-style: none;
+  padding-top: 4rem;
+}
+
+.showMenu {
+  transform: translateY(0);
+}
+
+.menuItem {
+  display: block;
+  margin: 2rem 4rem;
+  font-size: 1.8rem;
+  color: white;
+  text-decoration: none;
+}
+
+.menuItem:hover {
+  text-decoration: underline;
+}
+
+.burger {
+  /*border: 1px solid yellow;*/
+  position: fixed;
+  bottom: 5%;
+  left: 48%;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.bar {
+  display: block;
+  width: 35px;
+  height: 5px;
+  margin: 6px auto;
+  transition: all 0.3s ease-in-out;
+  background-color: rgb(243, 243, 216);
+}
+
+.burger.active .bar:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.burger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active .bar:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
 }

@@ -121,3 +121,25 @@ function audioPlay (item) {
     audio.src = item.audioPath;
     audio.play();
 };
+
+
+
+/*burger-menu*/
+const menu = document.querySelector(".menu");
+const burger = document.querySelector(".burger");
+const link = document.querySelectorAll(".menuItem");
+
+function toggleMenu () {
+    menu.classList.toggle("showMenu");
+    burger.classList.toggle("active");
+};
+
+function linkCloseMenu () {
+    menu.classList.remove("showMenu");
+    burger.classList.remove("active");
+};
+
+burger.addEventListener("click", toggleMenu);
+menu.addEventListener("click", toggleMenu);
+link.addEventListener("click", linkCloseMenu);
+
