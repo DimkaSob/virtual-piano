@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
 }
 
 body {
@@ -64,7 +65,7 @@ body {
 }
 
 /*burger-menu-style*/
-.menu {
+.signature {
   position: fixed;
   transform: translateY(100%);
   transition: transform 1s ease;
@@ -75,24 +76,20 @@ body {
   z-index: 99;
   background: black;
   color: white;
-  list-style: none;
-  padding-top: 4rem;
+  margin: 0 auto;
+  font-size: 220%;
+  text-align: center;
+  font-weight: 600;
+  padding-top: 20%;
+}
+
+.signature a {
+  text-decoration: none;
+  color: azure;
 }
 
 .showMenu {
   transform: translateY(0);
-}
-
-.menuItem {
-  display: block;
-  margin: 2rem 4rem;
-  font-size: 1.8rem;
-  color: white;
-  text-decoration: none;
-}
-
-.menuItem:hover {
-  text-decoration: underline;
 }
 
 .burger {
@@ -124,3 +121,4 @@ body {
 .burger.active .bar:nth-child(3) {
   transform: translateY(-11px) rotate(-45deg);
 }
+/*Made with 🤍 by */

@@ -125,21 +125,20 @@ function audioPlay (item) {
 
 
 /*burger-menu*/
-const menu = document.querySelector(".menu");
+const signature = document.querySelector(".signature");
 const burger = document.querySelector(".burger");
-const link = document.querySelectorAll(".menuItem");
 
 function toggleMenu () {
-    menu.classList.toggle("showMenu");
+    signature.classList.toggle("showMenu");
     burger.classList.toggle("active");
 };
 
 function linkCloseMenu () {
-    menu.classList.remove("showMenu");
+    signature.classList.remove("showMenu");
     burger.classList.remove("active");
 };
 
 burger.addEventListener("click", toggleMenu);
-menu.addEventListener("click", toggleMenu);
-link.addEventListener("click", linkCloseMenu);
+signature.addEventListener("click", toggleMenu);
+//link.addEventListener("click", linkCloseMenu);
 
